@@ -13,7 +13,7 @@
             $peso = 62.6;
             //booleana
             $gamer = true;
-            //variavel constante
+            //variavel constante;
             define('BD_USER','bd_user_dev');
             echo BD_USER;
         ?>
