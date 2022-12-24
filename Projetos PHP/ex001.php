@@ -1,19 +1,20 @@
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title>Curso de PHP</title>
+        <meta charset="utf-8">
+        <title>Ex001</title>
     </head>
     <body>
-        <?php 
-            echo 'Utilizando a tag padrão'
-        ?>
-        </br>
-        <?= 'Utilizado a tag de impressão' ?> 
-        </br>
-        </br>
         <?php
-            echo 'Utilizando o echo<br>';
-            print "Utilizando o print<hr>";
+            $nome = 'Pedro Augusto';
+            $idade = 67;
+            $peso = 74;
+
+            if(($idade>=19 && $idade<=69) && ($peso >= 50)){
+                echo "$nome Doador";
+            }
+            else{
+                echo "$nome Não doador";
+            }
         ?>
     </body>
 </html>
