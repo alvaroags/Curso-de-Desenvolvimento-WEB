@@ -1,8 +1,11 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != "SIM"){
-  header('Location: index.php?login=erro2');
-  }
+  require_once "validador_acesso.php";
+$chamados = array();
+$arquivo = fopen('texto.txt', 'r');
+while (!feof($arquivo)){
+  $chamados[] = fgets($arquivo);
+}
+fclose($arquivo);
 ?>
 
 <html>
@@ -28,6 +31,11 @@
         <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="logoff.php" class="nav-link">SAIR</a>
+        </li>
+      </ul>
     </nav>
 
     <div class="container">    
@@ -40,28 +48,26 @@
             </div>
             
             <div class="card-body">
-              
+              <?php
+                foreach ($chamados as $i => $chamado) {
+                  $j = 1;
+                  $chamados_dados = explode('#', $chamado);
+                  if(count($chamados_dados) < 3 || ($_SESSION['perfil_id'] == 2) && $_SESSION['id'] != $chamados_dados[0]){
+                    continue;
+                  }
+                ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
+                  <h5 class="card-title"><?=$chamados_dados[$j++]?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamados_dados[$j++]?></h6>
+                  <p class="card-text"><?=$chamados_dados[$j++]?></p>
 
                 </div>
               </div>
-
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
-
+                <?php }?>
               <div class="row mt-5">
                 <div class="col-6">
-                  <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                  <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
                 </div>
               </div>
             </div>
