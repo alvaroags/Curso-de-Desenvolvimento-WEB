@@ -1,4 +1,5 @@
 <?php
+  //integrando uma unica fez o script validador acesso
   require_once "validador_acesso.php";
 ?>
 

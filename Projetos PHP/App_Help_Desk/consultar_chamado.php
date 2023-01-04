@@ -1,11 +1,6 @@
 <?php
-  require_once "validador_acesso.php";
-$chamados = array();
-$arquivo = fopen('texto.txt', 'r');
-while (!feof($arquivo)){
-  $chamados[] = fgets($arquivo);
-}
-fclose($arquivo);
+require_once "validador_acesso.php";
+require_once "controlador_chamados.php";
 ?>
 
 <html>
@@ -49,18 +44,16 @@ fclose($arquivo);
             
             <div class="card-body">
               <?php
-                foreach ($chamados as $i => $chamado) {
+                //Printando dinamicamente os chamados de acordo com o acesso do usuario
+                //Os chamados foram colocados nas variaveis como uma matriz
+                for ($i = 0; $i < count($indices); $i++){
                   $j = 1;
-                  $chamados_dados = explode('#', $chamado);
-                  if(count($chamados_dados) < 3 || ($_SESSION['perfil_id'] == 2) && $_SESSION['id'] != $chamados_dados[0]){
-                    continue;
-                  }
                 ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title"><?=$chamados_dados[$j++]?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamados_dados[$j++]?></h6>
-                  <p class="card-text"><?=$chamados_dados[$j++]?></p>
+                  <h5 class="card-title"><?=$chamados[$indices[$i]][$j++]?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamados[$indices[$i]][$j++]?></h6>
+                  <p class="card-text"><?=$chamados[$indices[$i]][$j++]?></p>
 
                 </div>
               </div>

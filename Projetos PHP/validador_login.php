@@ -11,6 +11,7 @@ $usuarios = [
     ['id' => 4, 'email' => 'maria@teste.com', 'senha' => '1234', 'perfil_id' => 2]
 ];
     foreach($usuarios as $user){
+        //Verifica se o usuario fez o login corretamente
         if ($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']) {
             $atentifica_user = true;
             $id_user = $user['id'];
@@ -18,13 +19,14 @@ $usuarios = [
         }
     }
 if ($atentifica_user){
+    //Passa como dados se o login foi realizado com sucesso ou não
     $_SESSION['autenticado'] = true;
     $_SESSION['id'] = $id_user;
     $_SESSION['perfil_id'] = $perfil_user;
-    header('Location: home.php?');
+    header('Location: App_Help_Desk/home.php?');
 }
 else{
     $_SESSION['autenticado'] = false;
-    header('Location: index.php?login=erro');
+    header('Location: App_Help_Desk/index.php?login=erro');
 }
 ?>

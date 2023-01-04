@@ -32,7 +32,7 @@
               Login
             </div>
             <div class="card-body">
-              <form action="validador_login.php" method="POST">
+              <form action="../validador_login.php" method="POST">
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
                 </div>
@@ -40,11 +40,13 @@
                   <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
                 <?php
+                  //Avalia de acordo com o validador de login se o usuario digitou o usuario ou a senha invalida
                   if(isset($_GET['login']) && $_GET['login'] == 'erro'){
                 ?>
                   <div class="text-danger">Usuario ou senha inválido(s)</div>
                 <?php } ?>
                 <?php 
+                  //Avalia se o usuario fez o login e printa na tela uma mensagem de erro e pede para logar primeiro
                   if(isset($_GET['login']) && $_GET['login'] == 'erro2'){
                 ?>
                   <div class="text-danger">Valide seu usuario primeiro</div>

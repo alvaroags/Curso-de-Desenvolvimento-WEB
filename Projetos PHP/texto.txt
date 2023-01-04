@@ -1,7 +1,8 @@
-
 1#notebook#Software#weqr
 3#Computador#Hardware#Queimou
 3#Computador#Hardware#Queimou
 3#Impressora#Impressora#Sem tinta
 4#Mesa#Hardware#Minha mesa quebrou
 4#Internet#Rede#A internet caiu
+3#Luz#Hardware#A luz não acende
+1#Impressora#Hardware#asdfasd
