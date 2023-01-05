@@ -1,5 +1,5 @@
 <?php
-
+//Herança é muito usado para reutilização e manutenção de codigo
 class Carro extends Veiculo{
     public $tetoSolar = true;
     function abrirTetoSolar(){
