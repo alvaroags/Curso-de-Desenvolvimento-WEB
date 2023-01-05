@@ -8,7 +8,7 @@
         echo ceil($numero) .'</br>';
         echo floor($numero) .'</br>';
         echo round($numero) .'</br>';
-        echo rand(0, 124) .'</br>';
+        echo rand(0, 48) .'</br>';
         echo sqrt($numero);
         ?>
     </body>
