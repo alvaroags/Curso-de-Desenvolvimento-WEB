@@ -13,7 +13,9 @@ class Pessoa{
         return $this->$atributo;
     }
 }
+//função construct instancia um novo objeto e com ele é possivel passar alguns parametros que ele reconhece e atribui conforme a função construct foi feita
 $pessoa = new Pessoa("Alvaro");
 echo '<br> Nome: ' . $pessoa->__get('nome');
+//Função destruct faz a remoção de um objeto e para usar ele pode usar o unset()
 unset($pessoa);
 ?>
