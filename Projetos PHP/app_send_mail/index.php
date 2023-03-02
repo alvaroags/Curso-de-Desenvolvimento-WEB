@@ -26,7 +26,6 @@
 								<label for="para">Para</label>
 								<input type="email" class="form-control" id="para" placeholder="joao@dominio.com.br" name="para">
 							</div>
-
 							<div class="form-group">
 								<label for="assunto">Assunto</label>
 								<input type="text" class="form-control" id="assunto" placeholder="Assundo do e-mail" name="assunto">
