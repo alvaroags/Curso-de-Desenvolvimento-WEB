@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* 
+body{
+    background-color: #303030;
+} */
+
+.navbar{
+    background-color: #4b4b4b;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.conteudo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 91vh;
+    background: #202020;
+}
+.box{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    top: -35%;
+    left: -50%;
+    width: 400px;
+    height: 440px;
+    background: linear-gradient(0deg, transparent, #727271, #727271);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 440px;
+    background: linear-gradient(0deg, transparent, #727172, #727271);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.form{
+    position: absolute;
+    inset: 3px;
+    border-radius: 8px;
+    background-color: #202020;
+    z-index: 10;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+.form h2{
+    color: #21c2f8;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.inputBox{
+    position: relative;
+    width: 320px;
+    margin-top: 35px;
+}
+.inputBox input{
+    position: relative;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    background: transparent;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    justify-content: space-between ;
+}
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.50);
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span,
+.inputBox input.com-conteudo ~ span{
+    color: #21c2f8;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    background: #202020;
+    border-left: 1px solid #21c2f8;
+    border-right: 1px solid #21c2f8;
+    letter-spacing: 0.2em;
+    padding: 0 10px;
+}
+.show{
+    position: absolute;
+    display: none;
+    background-color: #202020;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-left: 1px solid #21c2f8;
+    border-right: 1px solid #21c2f8;
+    padding: 0 8px;
+    color: #21c2f8;
+}
+
+.inputBox input:valid ~ .show,
+.inputBox input:focus ~ .show{
+    display: flex;
+    transform: translateX(225px) translateY(-54px);
+} 
+
+.show::before{
+    content: 'Mostrar';
+    font-size: 0.65em;
+    letter-spacing: 0.2em;
+}
+
+.show.hide::before{
+    content: 'Ocultar';
+}
+
+.inputBox input:valid,
+.inputBox input:focus,
+.inputBox input.com-conteudo{
+    border: 1px solid #21c2f8;
+}
+
+.links{
+    display: flex;
+    justify-content: space-between;
+}
+.links a{
+    margin: 10px 0;
+    margin-top: 25px;
+    font-size: 0.75em;
+    color: #d8d8d8;
+    text-decoration: none;
+}
+.links a:hover,
+.links a:nth-child(2){
+    color: #21c2f8;
+}
+.btn-envia{
+    border: none;
+    outline: none;
+    background: #21c2f8;
+    padding: 11px 25px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #303030;
+    font-size: 1.1em;
+}
+.btn-envia:hover{
+    color: white;
+}
+
+#text-error{
+    color: #3ccfda;
+    text-align: center;
+    margin-bottom: -20px;
+    /* padding: 0; */
+}
+
+.form .verifica_senha{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #202020;
+}
+
+.form .verifica_senha::before{
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    transition: 0.5s;
+    background: #f00;
+}
+.form.fraca .verifica_senha::before{
+    width: 10%;
+    background: #f00;
+    filter: drop-shadow(0 0 5px #f00) drop-shadow(0 0 10px #f00) drop-shadow(0 0 20px #f00);
+}
+.form.media .verifica_senha::before{
+    width: 66.66%;
+    background: #ff0;
+    filter: drop-shadow(0 0 1px #ff0) drop-shadow(0 0 1px #ff0) drop-shadow(0 0 5px #ff0);
+}
+.form.forte .verifica_senha::before{
+    width: 100%;
+    background: #0f0;
+    filter: drop-shadow(0 0 1px #0f0) drop-shadow(0 0 1px #0f0) drop-shadow(0 0 5px #0f0);
+}
