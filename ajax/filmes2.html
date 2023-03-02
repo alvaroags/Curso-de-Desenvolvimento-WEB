@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Catálogo de filmes</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="xmltojson.js"></script>
+        <script>
+            const getFilmes = async() => {
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.open('GET', 'http://localhost/ajax/filmes.json') 
+            
+                xmlHttp.onreadystatechange = () => {
+                    if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                        let JSONFilmes = xmlHttp.responseText
+                        let objJSONFilmes = JSON.parse(JSONFilmes)
+                        let divRow = document.createElement('div')
+                        divRow.className = 'row'
+                        for(let i in objJSONFilmes.filmes){
+
+                            let filme  = objJSONFilmes.filmes[i]
+                            let divRow = document.createElement('div')
+                            divRow.className = 'row'
+                            let divCol = document.createElement('div')
+                            divCol.className = 'col'
+                            let hr = document.createElement('hr')
+
+                            for(let j in filme){
+                                
+                                let p = document.createElement('p')
+                                let texto = ''
+
+                                if(Array.isArray(filme[j])){
+
+                                    for(let k in filme[j]){
+                                        genero_ator = filme[j][k]
+
+                                        for(let p in genero_ator){
+                                            if(texto)
+                                                texto += ', '
+                                            texto += genero_ator[p]
+                                        }
+                                    }
+                                }
+                                else if(filme[j] == filme.dataLancamento){
+                                    texto = filme.dataLancamento.data + ' ('+filme.dataLancamento.pais+')'
+                                }
+                                else
+                                    texto = filme[j]    
+                            
+                                p.innerHTML = '<strong>'+ j + '</strong>' + ': ' + texto
+                                divCol.append(p)
+                            }
+                            
+                            divCol.appendChild(hr)
+                            divRow.appendChild(divCol)
+                            document.getElementById('lista').append(divRow)
+                            // document.getElementById('lista').appendChild(divRow)
+                            
+                            
+                        }
+                    }
+                    if(xmlHttp.readyState == 4 && xmlHttp.status == 404){
+                        console.log("Deu erro rapa")
+                    }
+                }
+                
+                await xmlHttp.send()
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-light mb-4">
+            <div class="container">
+                <div class="navbar-brand mb-0 h1">
+                    <h3>Catálogo de filmes</h3>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col">
+                    <button type="button" onclick="getFilmes()" class="btn btn-success" >Listar Filmes</button>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="lista"></div>
+    </body>
+</html>
