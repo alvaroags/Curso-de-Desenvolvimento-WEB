@@ -29,9 +29,8 @@ $(document).ready(() => {
                 $('#display_elogios').html(dados.elogios)
                 $('#display_sugestoes').html(dados.sugestoes)
                 $('#display_despesas').html(dados.despesas)
-                console.log(dados)
             },
-            // error: erro => {console.log(erro)}
+            error: erro => {console.log(erro)}
         })
     })
 })
