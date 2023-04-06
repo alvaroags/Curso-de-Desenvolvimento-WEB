@@ -6,16 +6,18 @@ class Conexao{
     private $user = 'root';
     private $pass = '';
 
-    public function conectar(){
-        try{
+    public function conectar()
+    {
+        try {
             $conexao = new PDO("mysql:host=$this->host;dbname=$this->dbname", "$this->user", "$this->pass");
-            
             return $conexao;
-        } catch(PDOException $e){
+        }
+        catch (PDOException $e) {
             echo 'deu ruim fi';
             echo `<p> {$e->getMessage()} </p>`;
         }
     }
+    
 }
 
 ?>

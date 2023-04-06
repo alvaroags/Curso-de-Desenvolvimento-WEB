@@ -127,14 +127,6 @@ $competencia = explode('-', $_GET['competencia']);
 $ano = $competencia[0];
 $mes = $competencia[1];
 $dias_do_mes = cal_days_in_month(CAL_GREGORIAN,$mes,$ano);
-// $competencia = explode('-', $_GET['competencia']);
-// $competencia[0] = '2018';
-// $competencia[1] = '10';
-// print_r($_GET['competencia']);
-// $ano = $competencia[0];
-// $mes = $competencia[1];
-// $dias_do_mes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
-
 
 $dashboard->__set('data_inicio', $ano.'-'.$mes.'-01');
 $dashboard->__set('data_fim', $ano.'-'.$mes.'-'.$dias_do_mes);
