@@ -7,3 +7,4 @@
 3#Luz#Hardware#A luz não acende
 1#Impressora#Hardware#asdfasd
 1#Motor#Impressora#O motor do computador parou
+2#Teste#TestandoPHP#Estou tentando descobrir o erro
