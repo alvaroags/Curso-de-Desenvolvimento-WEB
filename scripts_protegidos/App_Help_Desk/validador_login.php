@@ -1,9 +1,9 @@
 <?php
 session_start();
-$atentifica_user = false;
+$atentifica_user = true;
 $id_user = null;
 $perfil_user = null;
-$_SESSION['autenticado'] = false;
+$_SESSION['autenticado'] = true;
 $usuarios = [
     ['id' => 1, 'email' => 'adm@teste.com', 'senha' => '1234', 'perfil_id' => 1],
     ['id' => 2, 'email' => 'user@teste.com', 'senha' => '1234', 'perfil_id' => 1],
